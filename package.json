@@ -1,0 +1,25 @@
+{
+  "name": "just-on",
+  "version": "0.0.1",
+  "description": "Just the event module of jQuery",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "node build/build.mjs"
+  },
+  "keywords": [
+    "event",
+    "on",
+    "off",
+    "jquery",
+    "javascript",
+    "browser",
+    "library"
+  ],
+  "author": "ajiho",
+  "license": "MIT",
+  "devDependencies": {
+    "execa": "^9.3.1",
+    "fs-extra": "^11.2.0"
+  }
+}
