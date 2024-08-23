@@ -5,8 +5,13 @@
   "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "build": "node build/build.mjs"
+    "build": "node build/build.js",
+    "release": "node build/release.js"
   },
+  "bugs": {
+    "url": "https://github.com/ajiho/just-on/issues"
+  },
+  "repository": "github:ajiho/just-on",
   "keywords": [
     "event",
     "on",
@@ -20,6 +25,9 @@
   "license": "MIT",
   "devDependencies": {
     "execa": "^9.3.1",
-    "fs-extra": "^11.2.0"
+    "fs-extra": "^11.2.0",
+    "picocolors": "^1.0.1",
+    "prompts": "^2.4.2",
+    "semver": "^7.6.3"
   }
 }

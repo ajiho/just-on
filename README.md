@@ -17,10 +17,15 @@ $ npm i -D just-on
 ```js
 import { on, off } from "just-on";
 
-//Binding Events
+//bind click event
 on("#bind", "click", function () {
   console.log("binded!");
 });
 
+//remove click event
 off("#bind", "click");
 ```
+
+We just placed the selector parameter in the first position of the method here
+
+For details, please refer to : [on](https://api.jquery.com/on/#on-events-selector-data-handler)、[off](https://api.jquery.com/off/#off-events-selector-handler)
