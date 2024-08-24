@@ -1,6 +1,6 @@
 {
   "name": "just-on",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Just the event module of jQuery",
   "main": "src/index.js",
   "type": "module",
