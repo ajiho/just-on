@@ -40,7 +40,9 @@ try {
   );
 
   //移动到src目录
-  fs.moveSync(`jquery/dist/${filename}`, `src/${filename}`,{ overwrite: true });
+  fs.moveSync(`jquery/dist/${filename}`, `src/${filename}`, {
+    overwrite: true,
+  });
 } catch (error) {
   console.error("Error:", error);
 }
