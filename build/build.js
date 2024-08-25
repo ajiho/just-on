@@ -15,7 +15,13 @@ async function main() {
     console.log('The jQuery directory already exists')
   } else {
     // 克隆jquery仓库
-    await run('git', ['clone', 'https://github.com/jquery/jquery.git'])
+    await run('git', [
+      'clone',
+      '--branch',
+      '4.0.0-beta.2',
+      '--single-branch',
+      'https://github.com/jquery/jquery.git',
+    ])
   }
 
   // 判断是否已经安装依赖,没安装就安装依赖
