@@ -89,7 +89,7 @@ function jQueryFactory(window, noGlobal) {
     }
   }
 
-  var version = '4.0.0-beta.2+dbc9dac7 +event',
+  var version = '4.0.0-beta.2+51fffe9f +event',
     rhtmlSuffix = /HTML$/i,
     jQuery = function (selector, context) {
       return new jQuery.fn.init(selector, context)

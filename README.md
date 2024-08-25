@@ -15,7 +15,12 @@ $ npm i -D just-on
 ## usage
 
 ```js
-import { on, off } from 'just-on'
+import { on, off, one } from 'just-on'
+
+// bind an event once
+one('#btn', 'mouseenter', function () {
+  console.log('Mouse movement only takes effect once')
+})
 
 //bind click event
 on('#btn', 'click', function () {
@@ -28,4 +33,4 @@ off('#btn', 'click')
 
 We just placed the selector parameter in the first position of the method here
 
-For details, please refer to : [on](https://api.jquery.com/on/#on-events-selector-data-handler)、[off](https://api.jquery.com/off/#off-events-selector-handler)
+For details, please refer to : [on](https://api.jquery.com/on/#on-events-selector-data-handler)、[off](https://api.jquery.com/off/#off-events-selector-handler)、[one](https://api.jquery.com/one/#one-events-data-handler)

@@ -3,25 +3,30 @@ import $ from './event.js'
 /**
  * Attach an event handler function for one or more events to the selected elements.
  * @author Ajiho <lujiahao@88.com>
- * @license MIT
- * @param {String|Element} element  Element or element selector string
- * @param {String} events One or more space-separated event types and optional namespaces, such as "click" or "keydown.myPlugin".
- * @param {String} [selector] A selector string to filter the descendants of the selected elements that trigger the event. If the selector is null or omitted, the event is always triggered when it reaches the selected element.
- * @param {*} [data] Data to be passed to the handler in event.data when an event is triggered.
- * @param {Function} [handler] A function to execute when the event is triggered. The value false is also allowed as a shorthand for a function that simply does return false.
+ * @param {String|Element|jQuery} element  Element or element selector string
+ * @param {...*} args Additional arguments passed to the jQuery .on() method
  * @returns {jQuery} JQuery Object
  */
-export function on(element, events, selector, data, handler) {
-  $(element).on(events, selector, data, handler)
+export function on(element, ...args) {
+  $(element).on(...args)
 }
 
 /**
  * Remove an event handler.
- * @param {String|Element} element Element or element selector string
- * @param {String} events One or more space-separated event types and optional namespaces, or just namespaces, such as "click", "keydown.myPlugin", or ".myPlugin".
- * @param {String} [selector] A selector which should match the one originally passed to .on() when attaching event handlers.
- * @param {Function} [handler] A handler function previously attached for the event(s), or the special value false.
+ * @param {String|Element|jQuery} element Element or element selector string
+ * @param {...*} args Additional arguments passed to the jQuery .off() method
+ * @returns {jQuery} JQuery Object
  */
-export function off(element, events, selector, handler) {
-  $(element).off(events, selector, handler)
+export function off(element, ...args) {
+  $(element).off(...args)
+}
+
+/**
+ * Attach a handler to an event for the elements. The handler is executed at most once per element per event type.
+ * @param {String|Element|jQuery} element Element or element selector string
+ * @param {...*} args Additional arguments passed to the jQuery .one() method
+ * @returns {jQuery} JQuery Object
+ */
+export function one(element, ...args) {
+  $(element).one(...args)
 }
