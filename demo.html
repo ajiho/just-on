@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="bind">bind</button>
+    <button id="off">off</button>
+
+    <!-- <script type="module">
+      import $ from "./src/event.js";
+
+      $("#bind").one("click", function () {
+        console.log("Button clicked!");
+      });
+    </script> -->
+
+    <script type="module">
+      import { on, off } from './src/index.js'
+
+      //绑定事件
+      on('#bind', 'click', function () {
+        console.log('binded!')
+      })
+
+      on('#off', 'click', function () {
+        //解绑事件
+        off('#bind', 'click')
+
+        console.log('The click event has been removed')
+      })
+    </script>
+  </body>
+</html>

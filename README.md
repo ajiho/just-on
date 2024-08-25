@@ -1,6 +1,6 @@
 # just-on
 
-Just the event module of jQuery 
+Just the event module of jQuery
 
 ## why?
 
@@ -15,15 +15,15 @@ $ npm i -D just-on
 ## usage
 
 ```js
-import { on, off } from "just-on";
+import { on, off } from 'just-on'
 
 //bind click event
-on("#bind", "click", function () {
-  console.log("binded!");
-});
+on('#btn', 'click', function () {
+  console.log('binded!')
+})
 
 //remove click event
-off("#bind", "click");
+off('#btn', 'click')
 ```
 
 We just placed the selector parameter in the first position of the method here

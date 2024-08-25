@@ -1,4 +1,4 @@
-import $ from "./event.js";
+import $ from './event.js'
 
 /**
  * Attach an event handler function for one or more events to the selected elements.
@@ -12,16 +12,16 @@ import $ from "./event.js";
  * @returns {jQuery} JQuery Object
  */
 export function on(element, events, selector, data, handler) {
-  $(element).on(events, selector, data, handler);
+  $(element).on(events, selector, data, handler)
 }
 
 /**
  * Remove an event handler.
- * @param {String|Element} element Element or element selector string 
+ * @param {String|Element} element Element or element selector string
  * @param {String} events One or more space-separated event types and optional namespaces, or just namespaces, such as "click", "keydown.myPlugin", or ".myPlugin".
  * @param {String} [selector] A selector which should match the one originally passed to .on() when attaching event handlers.
  * @param {Function} [handler] A handler function previously attached for the event(s), or the special value false.
  */
 export function off(element, events, selector, handler) {
-  $(element).off(events, selector, handler);
+  $(element).off(events, selector, handler)
 }
