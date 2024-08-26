@@ -1,5 +1,11 @@
 # just-on
 
+[![test](https://github.com/ajiho/just-on/workflows/Test/badge.svg)](https://github.com/ajiho/just-on/actions)
+[![npm](https://img.shields.io/npm/v/just-on)](https://www.npmjs.com/package/just-on)
+[![cdn version](https://data.jsdelivr.com/v1/package/npm/just-on/badge)](https://www.jsdelivr.com/package/npm/just-on)
+
+---
+
 Just the event module of jQuery
 
 ## why?

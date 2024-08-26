@@ -77,9 +77,30 @@ async function main() {
   step('\nUpdating the package version...')
   updatePackage(targetVersion)
 
+  //生成变更日志
+  step('\nGenerating the changelog...')
+  await run('npm', ['run', 'changelog'])
+  await run('npx', [
+    'prettier',
+    '--config',
+    'prettier.config.mjs',
+    '--write',
+    'CHANGELOG.md',
+  ])
+
+  const { yes: changelogOk } = await prompts({
+    type: 'confirm',
+    name: 'yes',
+    message: `Changelog generated. Does it look good?`,
+  })
+
+  if (!changelogOk) {
+    return
+  }
+
   // 提交更改和创建tag
   step('\nCommitting changes...')
-  await run('git', ['add', '.'])
+  await run('git', ['add', 'CHANGELOG.md', 'package.json', 'package-lock.json'])
   await run('git', ['commit', '-m', `release: v${targetVersion}`])
   await run('git', ['tag', `v${targetVersion}`])
 
@@ -96,6 +117,11 @@ function updatePackage(version) {
     const pkgPath = resolve(resolve(dir, '..'), file)
     const pkg = JSON.parse(readFileSync(pkgPath, 'utf-8'))
     pkg.version = version
+
+    if (pkg.packages && pkg.packages['']) {
+      pkg.packages[''].version = version
+    }
+
     writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n')
   })
 }

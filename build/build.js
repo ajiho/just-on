@@ -1,8 +1,12 @@
 import fs from 'fs-extra'
 import { execa } from 'execa'
 import strip from 'strip-comments'
+import c from 'picocolors'
+
 const run = (bin, args, opts = {}) =>
   execa(bin, args, { stdio: 'inherit', ...opts })
+
+const step = (msg) => console.log(c.cyan(msg))
 
 const filename = 'event.js'
 const dest = `src/${filename}`
@@ -12,9 +16,9 @@ async function main() {
   const fileExists = await fs.pathExists('jquery')
 
   if (fileExists) {
-    console.log('The jQuery directory already exists')
+    step('\nThe jQuery directory already exists, skipping cloning')
   } else {
-    // 克隆jquery仓库
+    step('\nClone the jQuery git repo...')
     await run('git', [
       'clone',
       '--branch',
@@ -27,11 +31,13 @@ async function main() {
   // 判断是否已经安装依赖,没安装就安装依赖
   const fileNodeModulesExists = await fs.pathExists('jquery/node_modules')
   if (fileNodeModulesExists) {
-    console.log('Dependency already installed')
+    step('\nJQuery dependency already exists, skip installation')
   } else {
+    step('\nInstall jQuery dependencies...')
     await run('npm', ['install'], { cwd: 'jquery' })
   }
 
+  step('\nBuild jQuery...')
   // 构建自己的jquery
   await run(
     'npm',
@@ -46,11 +52,13 @@ async function main() {
     { cwd: 'jquery' },
   )
 
+  step(`\nMove jQuery build product to ${dest} directory...`)
   // 移动到src目录
   fs.moveSync(`jquery/dist/${filename}`, dest, {
     overwrite: true,
   })
 
+  step(`\nRemove unnecessary comments...`)
   // 移除注释
   let jsCode = await fs.readFile(dest, 'utf-8')
   jsCode = strip(jsCode)
