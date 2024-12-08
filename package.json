@@ -35,7 +35,7 @@
     "@commitlint/cli": "^19.6.0",
     "@commitlint/config-conventional": "^19.6.0",
     "conventional-changelog-cli": "^5.0.0",
-    "execa": "^9.5.1",
+    "execa": "^9.5.2",
     "fs-extra": "^11.2.0",
     "husky": "^9.1.7",
     "picocolors": "^1.1.1",
